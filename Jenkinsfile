@@ -38,5 +38,11 @@ pipeline {
                 sh 'ls -la target/*.jar'
             }
         }
+        stage("Dockerize") {
+            steps {
+                echo "Building Docker image..."
+                sh 'docker build -t calculator-app:$BUILD_NUMBER .'
+            }
+        }
     }
 }
