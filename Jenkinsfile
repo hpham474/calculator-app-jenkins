@@ -23,7 +23,7 @@ pipeline {
                 echo "Compilation successful!"
             }
         }
-        stage('Build') {
+        stage('Test') {
             steps {
                 echo "Running unit tests..."
                 sh './mvnw test -B'
