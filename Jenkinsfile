@@ -18,12 +18,16 @@ pipeline {
             steps {
                 echo "Building application..."
                 sh 'chmod +x mvnw'
-
                 sh './mvnw --version'
-
                 sh './mvnw clean compile -B'
-
                 echo "Compilation successful!"
+            }
+        }
+        stage('Build') {
+            steps {
+                echo "Running unit tests..."
+                sh './mvnw test -B'
+                echo "Tests completed!"
             }
         }
     }
