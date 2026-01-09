@@ -14,5 +14,17 @@ pipeline {
                 sh "ls -la"
             }
         }
+        stage('Build') {
+            steps {
+                echo "Building application..."
+                sh 'chmod +x mvnw'
+
+                sh './mvnw --version'
+
+                sh './mvnw clean compile -B'
+
+                echo "Compilation successful!"
+            }
+        }
     }
 }
