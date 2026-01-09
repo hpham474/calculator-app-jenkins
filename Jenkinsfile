@@ -30,5 +30,13 @@ pipeline {
                 echo "Tests completed!"
             }
         }
+        stage('Package') {
+            steps {
+                echo "Packaging application..."
+                sh './mvnw package -DskipTests -B'
+                echo "Package created:"
+                sh 'ls -la target/*.jar'
+            }
+        }
     }
 }
